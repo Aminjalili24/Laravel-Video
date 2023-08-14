@@ -1,0 +1,39 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Category;
+use App\Models\User;
+use App\Models\Video;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class VideoFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Video::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function definition()
+    {
+
+        return [
+            'name' => $this->faker->name(),
+            'url' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4',
+            'length' => $this->faker->randomNumber(3),
+            'slug' => $this->faker->slug(),
+            'description' => $this->faker->realText(),
+            'thumbnail' => 'https://loremflickr.com/446/240/world?random=' . random_int(1, 99),
+            'category_id'=>random_int(1,7),
+            'user_id'=> User::find(20)
+        ];
+    }
+}
